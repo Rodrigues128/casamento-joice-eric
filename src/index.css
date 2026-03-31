@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 18 30% 92%;
+    --foreground: 345 100% 13%;
+    --card: 18 30% 92%;
+    --card-foreground: 345 100% 13%;
+    --popover: 18 30% 92%;
+    --popover-foreground: 345 100% 13%;
+    --primary: 345 100% 13%;
+    --primary-foreground: 18 30% 92%;
+    --secondary: 12 28% 73%;
+    --secondary-foreground: 345 100% 13%;
+    --muted: 12 28% 80%;
+    --muted-foreground: 345 60% 25%;
+    --accent: 153 14% 49%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 12 20% 78%;
+    --input: 12 20% 78%;
+    --ring: 345 100% 13%;
+    --chart-1: 345 100% 13%;
+    --chart-2: 153 14% 49%;
+    --chart-3: 12 28% 73%;
+    --chart-4: 345 100% 21%;
+    --chart-5: 18 30% 85%;
+    --radius: 0.5rem;
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Cormorant Garamond', serif;
+    --font-accent: 'Lora', serif;
+    --sidebar-background: 18 30% 92%;
+    --sidebar-foreground: 345 100% 13%;
+    --sidebar-primary: 345 100% 13%;
+    --sidebar-primary-foreground: 18 30% 92%;
+    --sidebar-accent: 12 28% 73%;
+    --sidebar-accent-foreground: 345 100% 13%;
+    --sidebar-border: 12 20% 78%;
+    --sidebar-ring: 345 100% 13%;
+  }
+
+  .dark {
+    --background: 345 40% 8%;
+    --foreground: 18 30% 92%;
+    --card: 345 40% 12%;
+    --card-foreground: 18 30% 92%;
+    --popover: 345 40% 12%;
+    --popover-foreground: 18 30% 92%;
+    --primary: 18 30% 92%;
+    --primary-foreground: 345 100% 13%;
+    --secondary: 345 30% 20%;
+    --secondary-foreground: 18 30% 92%;
+    --muted: 345 20% 18%;
+    --muted-foreground: 18 20% 65%;
+    --accent: 153 14% 35%;
+    --accent-foreground: 18 30% 92%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 345 20% 20%;
+    --input: 345 20% 20%;
+    --ring: 18 30% 92%;
+    --chart-1: 345 80% 50%;
+    --chart-2: 153 14% 49%;
+    --chart-3: 12 28% 60%;
+    --chart-4: 345 60% 40%;
+    --chart-5: 18 30% 30%;
+    --sidebar-background: 345 40% 8%;
+    --sidebar-foreground: 18 30% 92%;
+    --sidebar-primary: 18 30% 92%;
+    --sidebar-primary-foreground: 345 100% 13%;
+    --sidebar-accent: 345 30% 20%;
+    --sidebar-accent-foreground: 18 30% 92%;
+    --sidebar-border: 345 20% 20%;
+    --sidebar-ring: 18 30% 92%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
