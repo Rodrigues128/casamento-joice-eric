@@ -11,7 +11,10 @@ import PageNotFound from './lib/PageNotFound';
 function App() {
   return (
     <QueryClientProvider client={queryClientInstance}>
-      <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+      <Router 
+        basename="/casamento-joice-eric"
+        future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+      >
         <Routes>
           <Route path="/" element={<Home />} />
           {/* Rota de fallback para páginas não encontradas */}
