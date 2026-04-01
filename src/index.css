@@ -5,6 +5,12 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+  
   :root {
     --background: 18 30% 92%;
     --foreground: 345 100% 13%;

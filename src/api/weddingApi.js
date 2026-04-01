@@ -7,26 +7,28 @@ export const weddingApi = {
   rsvp: {
     /**
      * Envia os dados de presença para a planilha do Google
-     * @param {Object} data - Objeto contendo nome, presença, acompanhantes e recado
      */
     submit: async (data) => {
       const url = WEDDING_CONFIG.links.googleSheetsApi;
       
-      if (!url) {
-        console.warn('Google Sheets API URL não configurada.');
-        return;
-      }
+      if (!url) return;
 
       try {
-        // Envio usando no-cors para evitar problemas de Preflight
+        // Enviamos como texto simples para evitar erros de CORS (bloqueio do navegador)
         await fetch(url, {
           method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'text/plain' },
+          mode: 'no-cors', 
+          headers: {
+            'Content-Type': 'text/plain',
+          },
           body: JSON.stringify(data),
         });
+        
+        // Com no-cors o fetch não retorna erro se o Google receber, 
+        // então retornamos true por padrão
+        return true;
       } catch (error) {
-        console.error('Erro ao enviar RSVP:', error);
+        console.error('Erro na integração:', error);
         throw error;
       }
     },
