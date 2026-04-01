@@ -4,7 +4,6 @@ Site oficial do casamento de Joicilene e Eric.
 
 ## Funcionalidades
 - Confirmação de Presença (RSVP)
-- Mural de Recados
 - Detalhes do Evento
 - Galeria de Fotos
 

@@ -37,9 +37,14 @@ export default function Gallery() {
             <motion.div
               key={i}
               className="relative aspect-[4/5] overflow-hidden rounded-2xl group shadow-sm hover:shadow-xl transition-all duration-500"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: i * 0.15 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ 
+                duration: 0.8, 
+                delay: i * 0.15,
+                ease: [0.21, 0.47, 0.32, 0.98] 
+              }}
             >
               <img
                 src={photo.src}

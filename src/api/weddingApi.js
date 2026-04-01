@@ -1,35 +1,34 @@
-// Local API using localStorage
-const storage = window.localStorage;
+import { WEDDING_CONFIG } from '@/lib/wedding-config';
 
-const getItems = (key) => {
-  const items = storage.getItem(key);
-  return items ? JSON.parse(items) : [];
-};
-
-const saveItem = (key, item) => {
-  const items = getItems(key);
-  const newItem = { 
-    id: Math.random().toString(36).substr(2, 9), 
-    ...item,
-    created_date: new Date().toISOString() 
-  };
-  storage.setItem(key, JSON.stringify([newItem, ...items]));
-  return newItem;
-};
-
+/**
+ * Serviço de Integração com o Google Sheets
+ */
 export const weddingApi = {
-  auth: {
-    me: async () => ({ id: 'guest', name: 'Convidado' }),
-    logout: () => {},
-    redirectToLogin: () => {},
-  },
-  entities: {
-    GuestMessage: {
-      list: async () => getItems('guest_messages'),
-      create: async (data) => saveItem('guest_messages', data),
-    },
-    RSVP: {
-      create: async (data) => saveItem('rsvp_list', data),
+  rsvp: {
+    /**
+     * Envia os dados de presença para a planilha do Google
+     * @param {Object} data - Objeto contendo nome, presença, acompanhantes e recado
+     */
+    submit: async (data) => {
+      const url = WEDDING_CONFIG.links.googleSheetsApi;
+      
+      if (!url) {
+        console.warn('Google Sheets API URL não configurada.');
+        return;
+      }
+
+      try {
+        // Envio usando no-cors para evitar problemas de Preflight
+        await fetch(url, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain' },
+          body: JSON.stringify(data),
+        });
+      } catch (error) {
+        console.error('Erro ao enviar RSVP:', error);
+        throw error;
+      }
     },
   },
 };

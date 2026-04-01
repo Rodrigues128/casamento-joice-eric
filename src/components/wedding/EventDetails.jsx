@@ -1,100 +1,90 @@
 import { motion } from 'framer-motion';
-import { MapPin, Clock, Calendar, Church, PartyPopper } from 'lucide-react';
+import { MapPin, Clock, Calendar, Navigation, ExternalLink } from 'lucide-react';
 import useScrollAnimation from './useScrollAnimation';
 import Divider from './Divider';
+import { WEDDING_CONFIG } from '@/lib/wedding-config';
 
-const VENUE_IMG = 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=2074&auto=format&fit=crop';
-
-function DetailCard({ icon: Icon, title, children, delay }) {
+/**
+ * Cartão de Detalhe Individual
+ */
+function DetailCard({ icon: Icon, title, children, delay, action }) {
   return (
     <motion.div
-      className="bg-white/50 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-wine/5 shadow-sm"
+      className="bg-white/50 backdrop-blur-sm rounded-3xl p-8 border border-wine/5 shadow-sm flex flex-col h-full"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay, duration: 0.6 }}
     >
-      <div className="w-12 h-12 rounded-full bg-wine/5 flex items-center justify-center mb-4">
-        <Icon className="w-5 h-5 text-wine/70" />
+      <div className="w-14 h-14 rounded-2xl bg-wine/5 flex items-center justify-center mb-6">
+        <Icon className="w-6 h-6 text-wine/70" />
       </div>
-      <h3 className="font-display text-xl text-wine mb-2">{title}</h3>
-      <div className="font-body text-base text-wine/60 leading-relaxed">{children}</div>
+      <h3 className="font-display text-2xl text-wine mb-3">{title}</h3>
+      <div className="font-body text-base text-wine/60 leading-relaxed flex-grow">
+        {children}
+      </div>
+      {action && (
+        <div className="mt-6 pt-6 border-t border-wine/5">
+          <a href={action.href} target="_blank" rel="noopener noreferrer"
+            className="inline-flex items-center text-xs font-bold text-wine hover:text-wine-light transition-colors uppercase tracking-[0.2em] gap-2">
+            {action.icon && <action.icon className="w-3.5 h-3.5" />}
+            {action.label}
+          </a>
+        </div>
+      )}
     </motion.div>
   );
 }
 
 export default function EventDetails() {
   const { ref, isVisible } = useScrollAnimation();
+  const { formattedDate, formattedTime, location } = WEDDING_CONFIG.event;
+
+  // URL para Adicionar ao Calendário (Google Calendar)
+  const calendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=Casamento+Joicilene+%26+Eric&dates=20260919T220000Z/20260920T010000Z&details=Celebração+do+casamento+de+Joicilene+e+Eric&location=${encodeURIComponent(location.address)}&sf=true&output=xml`;
 
   return (
     <section id="evento" className="py-20 md:py-32 bg-blush" ref={ref}>
       <div className="max-w-5xl mx-auto px-6">
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
-          <p className="font-body text-sm tracking-[0.3em] uppercase text-sage mb-3">
+        <header className="text-center mb-16">
+          <motion.span className="font-body text-sm tracking-[0.3em] uppercase text-sage block mb-4"
+            initial={{ opacity: 0 }} animate={isVisible ? { opacity: 1 } : {}}>
             Informações
-          </p>
-          <h2 className="font-display text-3xl md:text-5xl text-wine">
+          </motion.span>
+          <motion.h2 className="font-display text-3xl md:text-5xl text-wine"
+            initial={{ opacity: 0, y: 30 }} animate={isVisible ? { opacity: 1, y: 0 } : {}}>
             Detalhes do Evento
-          </h2>
-          <div className="mt-4">
-            <Divider />
-          </div>
-        </motion.div>
+          </motion.h2>
+          <div className="mt-6"><Divider /></div>
+        </header>
 
-        {/* Venue image */}
-        <motion.div
-          className="rounded-2xl overflow-hidden shadow-xl mb-12"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={isVisible ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <img
-            src={VENUE_IMG}
-            alt="Local do casamento"
-            className="w-full h-56 md:h-80 object-cover"
-          />
-        </motion.div>
-
-        {/* Detail cards */}
-        <div className="grid sm:grid-cols-2 gap-6 max-w-xl mx-auto">
-          <DetailCard icon={Calendar} title="Data" delay={0.1}>
-            <p>Sábado</p>
-            <p className="font-display text-wine text-lg">19 de Setembro de 2026</p>
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {/* Card Data e Hora */}
+          <DetailCard icon={Calendar} title="Quando" delay={0.1}
+            action={{ label: "Adicionar à Agenda", href: calendarUrl, icon: ExternalLink }}>
+            <p className="font-display text-wine text-xl">{formattedDate}</p>
+            <p className="mt-1">Sábado • Celebração às {formattedTime}</p>
           </DetailCard>
-          <DetailCard icon={Clock} title="Horário" delay={0.2}>
-            <p>Celebração às 19h00</p>
+
+          {/* Card Localização */}
+          <DetailCard icon={MapPin} title="Onde" delay={0.2}
+            action={{ label: "Como chegar (GPS)", href: location.googleMapsUrl, icon: Navigation }}>
+            <p className="font-display text-wine text-xl">{location.name}</p>
+            <p className="mt-1">{location.address}</p>
+            <p>{location.city}</p>
           </DetailCard>
         </div>
 
-        {/* Map */}
-        <motion.div
-          className="mt-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3, duration: 0.6 }}
-        >
-          <div className="bg-white/50 backdrop-blur-sm rounded-2xl p-4 border border-wine/5 shadow-sm">
-            <div className="flex items-center gap-2 mb-4 px-2">
-              <MapPin className="w-4 h-4 text-wine/60" />
-              <span className="font-body text-sm text-wine/60">Como Chegar</span>
-            </div>
-            <div className="rounded-xl overflow-hidden h-64 md:h-80">
-              <iframe
-                title="Localização"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.0!2d-46.65!3d-23.55!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDMzJzAwLjAiUyA0NsKwMzknMDAuMCJX!5e0!3m2!1spt-BR!2sbr!4v1!5m2!1spt-BR!2sbr"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-              />
-            </div>
+        {/* Mapa Interativo Profissional */}
+        <motion.div className="mt-16 bg-white/40 backdrop-blur-sm rounded-[2.5rem] p-4 md:p-8 border border-wine/5 shadow-xl"
+          initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+          <div className="flex items-center gap-3 mb-6 px-4">
+            <div className="w-2 h-2 rounded-full bg-sage animate-pulse" />
+            <span className="font-body text-xs font-bold text-wine/50 uppercase tracking-[0.3em]">Localização em Tempo Real</span>
+          </div>
+          <div className="rounded-[1.5rem] overflow-hidden h-80 md:h-[450px] shadow-inner grayscale-[30%] hover:grayscale-0 transition-all duration-700">
+            <iframe title="Mapa do Evento" width="100%" height="100%" style={{ border: 0 }} loading="lazy" allowFullScreen
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.0!2d-46.65!3d-23.55!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDMzJzAwLjAiUyA0NsKwMzknMDAuMCJX!5e0!3m2!1spt-BR!2sbr!4v1!5m2!1spt-BR!2sbr" />
           </div>
         </motion.div>
       </div>

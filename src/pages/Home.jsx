@@ -6,7 +6,6 @@ import GiftList from '../components/wedding/GiftList';
 import Countdown from '../components/wedding/Countdown';
 import EventDetails from '../components/wedding/EventDetails';
 import RSVPSection from '../components/wedding/RSVPSection';
-import Messages from '../components/wedding/Messages';
 import Gallery from '../components/wedding/Gallery';
 import OurStory from '../components/wedding/OurStory';
 import Footer from '../components/wedding/Footer';
@@ -27,7 +26,6 @@ export default function Home() {
           <GiftList />
           <Countdown />
           <EventDetails />
-          <Messages />
           <RSVPSection />
           <Gallery />
           <Footer />
