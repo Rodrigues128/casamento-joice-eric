@@ -15,17 +15,18 @@ export const WEDDING_CONFIG = {
     formattedDate: "19 de Setembro de 2026",
     formattedTime: "19:00h",
     location: {
-      name: "Espaço das Flores",
-      address: "Rua das Noivas, 123 - Centro",
-      city: "São Paulo - SP",
+      name: "Espaço D'Rocha",
+      address: "Rua das Águas Marinhas, Centro",
+      city: "Cáceres - MT",
       googleMapsUrl:
-        "https://www.google.com/maps/search/?api=1&query=-23.55,-46.65",
+        "https://www.google.com/maps/place/Espaço+D'Rocha+Cáceres/data=!4m2!3m1!1s0x939aff442a3236a3:0xb4be64d524514132?sa=X&ved=1t:242&ictx=111",
     },
   },
   links: {
     giftList: "https://casamento-ld1o.listaideal.com.br/pt",
     googleSheetsApi:
       "https://script.google.com/macros/s/AKfycbxkCAVaWnyKE0LbQaZHdrjbc1eyjNw9yz0nhCnIUtq_kX-KDWsRz4O7zXpNK9eUvaiGVQ/exec",
+    musicUrl: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Tours/Enthusiast/Tours_-_01_-_Enthusiast.mp3", // Link temporário funcional (substitua pelo MP3 real)
   },
   social: {
     description:
@@ -35,11 +36,8 @@ export const WEDDING_CONFIG = {
   },
   images: {
     hero: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2069&auto=format&fit=crop",
-    storyMain:
-      "https://images.unsplash.com/photo-1510076857177-7470076d4098?q=80&w=2072&auto=format&fit=crop",
-    storyDetail:
-      "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=2070&auto=format&fit=crop",
-    venue:
-      "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=2074&auto=format&fit=crop",
+    
+  
   },
 };
+

@@ -1,15 +1,26 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Music, VolumeX } from 'lucide-react';
+import musicFile from '@/assets/photograph.mp3';
 
-export default function MusicPlayer() {
+export default function MusicPlayer({ autoPlay = false }) {
   const [playing, setPlaying] = useState(false);
   const [audio] = useState(() => {
-    const a = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
+    const a = new Audio(musicFile);
     a.loop = true;
     a.volume = 0.3;
     return a;
   });
+
+  useEffect(() => {
+    if (autoPlay) {
+      audio.play().then(() => {
+        setPlaying(true);
+      }).catch((err) => {
+        console.warn("Autoplay blocked or failed:", err);
+      });
+    }
+  }, [autoPlay, audio]);
 
   const toggle = () => {
     if (playing) {

@@ -6,7 +6,6 @@ import GiftList from '../components/wedding/GiftList';
 import Countdown from '../components/wedding/Countdown';
 import EventDetails from '../components/wedding/EventDetails';
 import RSVPSection from '../components/wedding/RSVPSection';
-import Gallery from '../components/wedding/Gallery';
 import OurStory from '../components/wedding/OurStory';
 import Footer from '../components/wedding/Footer';
 import MusicPlayer from '../components/wedding/MusicPlayer';
@@ -30,9 +29,8 @@ export default function Home() {
           <Countdown />
           <EventDetails />
           <RSVPSection />
-          <Gallery />
           <Footer />
-          <MusicPlayer />
+          <MusicPlayer autoPlay={envelopeOpen} />
         </>
       )}
     </div>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion as m, AnimatePresence as Ap } from 'framer-motion';
-import { Heart, Menu, X, Calendar, MapPin, Gift, Image as ImageIcon, MessageSquare, Home } from 'lucide-react';
+import { Heart, Menu, X, Calendar, MapPin, Gift, MessageSquare, Home } from 'lucide-react';
 import { WEDDING_CONFIG } from '@/lib/wedding-config';
 
 /**
@@ -12,7 +12,6 @@ const NAV_LINKS = [
   { href: '#contagem', label: 'Contagem', icon: Calendar },
   { href: '#evento', label: 'Evento', icon: MapPin },
   { href: '#presenca', label: 'RSVP', icon: MessageSquare },
-  { href: '#galeria', label: 'Galeria', icon: ImageIcon },
 ];
 
 export default function Navigation() {
@@ -78,7 +77,11 @@ export default function Navigation() {
 
           {/* Botão Hambúrguer Mobile */}
           <div className="md:hidden flex items-center">
-            <button onClick={() => setMobileOpen(true)} className="p-2 text-wine active:scale-90 transition-transform">
+            <button 
+              onClick={() => setMobileOpen(true)} 
+              className="p-2 text-wine active:scale-90 transition-transform"
+              aria-label="Abrir menu de navegação"
+            >
               <Menu className="w-8 h-8 stroke-[1.5]" />
             </button>
           </div>

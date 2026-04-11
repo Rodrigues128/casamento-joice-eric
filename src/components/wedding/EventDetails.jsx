@@ -84,7 +84,7 @@ export default function EventDetails() {
           </div>
           <div className="rounded-[1.5rem] overflow-hidden h-80 md:h-[450px] shadow-inner grayscale-[30%] hover:grayscale-0 transition-all duration-700">
             <iframe title="Mapa do Evento" width="100%" height="100%" style={{ border: 0 }} loading="lazy" allowFullScreen
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.0!2d-46.65!3d-23.55!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDMzJzAwLjAiUyA0NsKwMzknMDAuMCJX!5e0!3m2!1spt-BR!2sbr!4v1!5m2!1spt-BR!2sbr" />
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3829.544773823485!2d-57.68233512411634!3d-16.063162729094033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x939aff442a3236a3%3A0xb4be64d524514132!2sEspa%C3%A7o%20D'Rocha!5e0!3m2!1spt-BR!2sbr!4v1712851163462!5m2!1spt-BR!2sbr" />
           </div>
         </motion.div>
       </div>

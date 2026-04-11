@@ -1,12 +1,13 @@
 import { motion } from 'framer-motion';
 import useScrollAnimation from './useScrollAnimation';
 import Divider from './Divider';
+import couplePhoto from '@/assets/foto_site_joice.jpeg';
 
 const PHOTOS = [
+  { src: couplePhoto, alt: 'Momento especial do casal' },
   { src: 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop', alt: 'Momento romântico do casal' },
   { src: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=1974&auto=format&fit=crop', alt: 'Dança ao pôr do sol' },
   { src: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=2070&auto=format&fit=crop', alt: 'Mãos entrelaçadas' },
-  { src: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2070&auto=format&fit=crop', alt: 'Abraço sob as flores' },
 ];
 
 export default function Gallery() {
