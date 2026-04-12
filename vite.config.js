@@ -4,7 +4,7 @@ import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/casamento-joice-eric/', // Nome do seu repositório no GitHub
+  base: '/casamento-joice-eric/', 
   logLevel: 'info',
   plugins: [
     react(),

@@ -26,18 +26,26 @@ export const WEDDING_CONFIG = {
     giftList: "https://casamento-ld1o.listaideal.com.br/pt",
     googleSheetsApi:
       "https://script.google.com/macros/s/AKfycbxkCAVaWnyKE0LbQaZHdrjbc1eyjNw9yz0nhCnIUtq_kX-KDWsRz4O7zXpNK9eUvaiGVQ/exec",
-    musicUrl: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Tours/Enthusiast/Tours_-_01_-_Enthusiast.mp3", // Link temporário funcional (substitua pelo MP3 real)
+    musicUrl: "/casamento-joice-eric/src/assets/photograph.mp3",
   },
   social: {
     description:
       "Convidamos você para celebrar o nosso amor. Confira todos os detalhes do nosso casamento!",
     ogImage:
-      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=1200&auto=format&fit=crop",
+      "https://rodrigues128.github.io/casamento-joice-eric/src/assets/foto_site_joice.jpeg",
   },
   images: {
     hero: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2069&auto=format&fit=crop",
     
   
   },
+  sections: {
+    hero: { id: 'hero', label: 'Início' },
+    ourStory: { id: 'nossa-historia', label: 'Nossa História' },
+    giftList: { id: 'presentes', label: 'Presentes' },
+    countdown: { id: 'contagem', label: 'Contagem' },
+    eventDetails: { id: 'evento', label: 'Evento' },
+    rsvp: { id: 'presenca', label: 'Confirmar Presença' },
+  }
 };
 

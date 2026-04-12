@@ -3,15 +3,13 @@ import { Heart } from 'lucide-react';
 import Divider from './Divider';
 import { WEDDING_CONFIG } from '@/lib/wedding-config';
 
-const bgImage = 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2069&auto=format&fit=crop';
-
 export default function HeroSection() {
   const { bride, groom } = WEDDING_CONFIG.couple;
   const { formattedDate } = WEDDING_CONFIG.event;
+  const bgImage = WEDDING_CONFIG.images.hero;
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background with Overlay */}
       <div className="absolute inset-0">
         <img src={bgImage} alt="Wedding Background" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-b from-blush/80 via-blush/40 to-blush/90" />

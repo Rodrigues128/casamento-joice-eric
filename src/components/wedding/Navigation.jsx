@@ -1,44 +1,38 @@
 import { useState, useEffect } from 'react';
 import { motion as m, AnimatePresence as Ap } from 'framer-motion';
-import { Heart, Menu, X, Calendar, MapPin, Gift, MessageSquare, Home } from 'lucide-react';
+import { Heart, Menu, X, Calendar, MapPin, Gift, MessageSquare, Home, BookHeart } from 'lucide-react';
 import { WEDDING_CONFIG } from '@/lib/wedding-config';
-
-/**
- * Links de Navegação do Site
- */
-const NAV_LINKS = [
-  { href: '#hero', label: 'Início', icon: Home },
-  { href: '#presentes', label: 'Presentes', icon: Gift },
-  { href: '#contagem', label: 'Contagem', icon: Calendar },
-  { href: '#evento', label: 'Evento', icon: MapPin },
-  { href: '#presenca', label: 'RSVP', icon: MessageSquare },
-];
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const { initials, names } = WEDDING_CONFIG.couple;
+  const { sections } = WEDDING_CONFIG;
 
-  // Monitora o scroll para mudar o estilo da barra
+  // Mapeamento de ícones para as seções configuradas
+  const NAV_LINKS = [
+    { ...sections.hero, icon: Home },
+    { ...sections.ourStory, icon: BookHeart },
+    { ...sections.giftList, icon: Gift },
+    { ...sections.countdown, icon: Calendar },
+    { ...sections.eventDetails, icon: MapPin },
+    { ...sections.rsvp, icon: MessageSquare },
+  ];
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Bloqueia o scroll do fundo quando o menu mobile está aberto
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : 'unset';
   }, [mobileOpen]);
 
-  /**
-   * Navegação suave para as seções
-   */
-  const scrollToSection = (href) => {
+  const scrollToSection = (id) => {
     setMobileOpen(false);
-    const element = document.querySelector(href);
+    const element = document.getElementById(id);
     if (element) {
-      // Pequeno delay para permitir que o menu feche primeiro
       setTimeout(() => {
         element.scrollIntoView({ behavior: 'smooth' });
       }, 300);
@@ -53,8 +47,7 @@ export default function Navigation() {
         }`}
       >
         <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
-          {/* Logo / Iniciais */}
-          <button onClick={() => scrollToSection('#hero')} className="flex items-center gap-2 group relative z-[110]">
+          <button onClick={() => scrollToSection(sections.hero.id)} className="flex items-center gap-2 group relative z-[110]">
             <div className="bg-wine/5 p-1.5 rounded-full group-hover:bg-wine/10 transition-colors">
               <Heart className={`w-4 h-4 ${scrolled ? 'text-wine fill-wine' : 'text-wine'}`} />
             </div>
@@ -63,10 +56,9 @@ export default function Navigation() {
             </span>
           </button>
 
-          {/* Menu Desktop */}
           <div className="hidden md:flex items-center gap-10">
             {NAV_LINKS.map((link) => (
-              <button key={link.href} onClick={() => scrollToSection(link.href)}
+              <button key={link.id} onClick={() => scrollToSection(link.id)}
                 className={`font-body text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:text-wine relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-px after:bg-wine hover:after:w-full after:transition-all ${
                   scrolled ? 'text-wine/70' : 'text-wine/80'
                 }`}>
@@ -75,7 +67,6 @@ export default function Navigation() {
             ))}
           </div>
 
-          {/* Botão Hambúrguer Mobile */}
           <div className="md:hidden flex items-center">
             <button 
               onClick={() => setMobileOpen(true)} 
@@ -88,7 +79,6 @@ export default function Navigation() {
         </div>
       </m.nav>
 
-      {/* Menu Mobile - Gaveta Profissional */}
       <Ap>
         {mobileOpen && (
           <>
@@ -106,7 +96,7 @@ export default function Navigation() {
               <div className="flex-grow py-8 px-4 overflow-y-auto">
                 <div className="space-y-2">
                   {NAV_LINKS.map((link, i) => (
-                    <m.button key={link.href} onClick={() => scrollToSection(link.href)}
+                    <m.button key={link.id} onClick={() => scrollToSection(link.id)}
                       className="w-full flex items-center gap-4 p-4 rounded-2xl hover:bg-white/40 text-wine/80 hover:text-wine transition-all group"
                       initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05 + 0.2 }}>
                       <div className="p-2 rounded-xl bg-white/60 group-hover:bg-wine group-hover:text-white transition-colors">

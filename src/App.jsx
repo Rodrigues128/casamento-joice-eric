@@ -4,10 +4,6 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import PageNotFound from './lib/PageNotFound';
 
-/**
- * Componente Principal da Aplicação
- * Estrutura de rotas e provedores globais
- */
 function App() {
   return (
     <QueryClientProvider client={queryClientInstance}>
@@ -17,7 +13,6 @@ function App() {
       >
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* Rota de fallback para páginas não encontradas */}
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Router>

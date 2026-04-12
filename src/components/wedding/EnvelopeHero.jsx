@@ -18,7 +18,6 @@ export default function EnvelopeHero({ onOpen }) {
           exit={{ opacity: 0, scale: 1.1 }}
           transition={{ duration: 0.8, ease: 'easeInOut' }}
         >
-          {/* Envelope */}
           <motion.div
             className="relative cursor-pointer group"
             onClick={handleOpen}
@@ -28,9 +27,7 @@ export default function EnvelopeHero({ onOpen }) {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1, ease: 'easeOut' }}
           >
-            {/* Envelope body */}
             <div className="w-52 h-36 md:w-64 md:h-44 bg-blush-dark/40 rounded-md shadow-lg relative overflow-hidden border border-wine/10">
-              {/* Envelope flap */}
               <div className="absolute inset-x-0 top-0 h-1/2">
                 <div
                   className="absolute inset-0"
@@ -40,13 +37,11 @@ export default function EnvelopeHero({ onOpen }) {
                   }}
                 />
               </div>
-              {/* Seal */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 md:w-14 md:h-14 rounded-full bg-wine flex items-center justify-center shadow-md z-10">
                 <span className="text-blush font-display text-sm md:text-base tracking-wider">
                   J&E
                 </span>
               </div>
-              {/* Bottom fold lines */}
               <div
                 className="absolute inset-0"
                 style={{
@@ -57,7 +52,6 @@ export default function EnvelopeHero({ onOpen }) {
             </div>
           </motion.div>
 
-          {/* Names */}
           <motion.div
             className="mt-10 text-center"
             initial={{ y: 20, opacity: 0 }}
@@ -77,7 +71,6 @@ export default function EnvelopeHero({ onOpen }) {
             </div>
           </motion.div>
 
-          {/* CTA */}
           <motion.button
             onClick={handleOpen}
             className="mt-8 font-accent text-sm italic text-wine/60 hover:text-wine transition-colors duration-300 flex flex-col items-center gap-2"

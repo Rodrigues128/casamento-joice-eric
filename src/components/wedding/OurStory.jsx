@@ -4,10 +4,6 @@ import Divider from './Divider';
 import { WEDDING_CONFIG } from '@/lib/wedding-config';
 import couplePhoto from '@/assets/foto_site_joice.jpeg';
 
-/**
- * Seção Nossa História
- * Exibe a narrativa do casal com fotos e animações
- */
 export default function OurStory() {
   const { ref, isVisible } = useScrollAnimation();
   const { names } = WEDDING_CONFIG.couple;
@@ -29,7 +25,6 @@ export default function OurStory() {
         </header>
 
         <div className="flex flex-col md:flex-row gap-12 items-center">
-          {/* Coluna de Imagens com Efeitos */}
           <motion.div className="w-full md:w-1/2 relative"
             initial={{ opacity: 0, x: -50 }} animate={isVisible ? { opacity: 1, x: 0 } : {}} transition={{ duration: 1 }}>
             <div className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-2xl">
@@ -37,12 +32,10 @@ export default function OurStory() {
               <div className="absolute inset-0 bg-wine/5 mix-blend-overlay" />
             </div>
             
-            {/* Elemento Decorativo */}
             <motion.div className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 w-32 h-32 md:w-40 md:h-40 bg-blush rounded-3xl -z-10 shadow-lg"
               animate={{ rotate: [0, 5, 0] }} transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }} />
           </motion.div>
 
-          {/* Coluna de Texto Narrative */}
           <motion.div className="w-full md:w-1/2 space-y-6"
             initial={{ opacity: 0, x: 50 }} animate={isVisible ? { opacity: 1, x: 0 } : {}} transition={{ duration: 1, delay: 0.2 }}>
             <h3 className="font-display text-2xl text-wine mb-4 italic">"Onde tudo começou..."</h3>

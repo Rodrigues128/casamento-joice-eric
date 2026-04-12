@@ -4,9 +4,6 @@ import useScrollAnimation from './useScrollAnimation';
 import Divider from './Divider';
 import { WEDDING_CONFIG } from '@/lib/wedding-config';
 
-/**
- * Cartão de Detalhe Individual
- */
 function DetailCard({ icon: Icon, title, children, delay, action }) {
   return (
     <motion.div
@@ -40,7 +37,6 @@ export default function EventDetails() {
   const { ref, isVisible } = useScrollAnimation();
   const { formattedDate, formattedTime, location } = WEDDING_CONFIG.event;
 
-  // URL para Adicionar ao Calendário (Google Calendar)
   const calendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=Casamento+Joicilene+%26+Eric&dates=20260919T220000Z/20260920T010000Z&details=Celebração+do+casamento+de+Joicilene+e+Eric&location=${encodeURIComponent(location.address)}&sf=true&output=xml`;
 
   return (
@@ -59,14 +55,12 @@ export default function EventDetails() {
         </header>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {/* Card Data e Hora */}
           <DetailCard icon={Calendar} title="Quando" delay={0.1}
             action={{ label: "Adicionar à Agenda", href: calendarUrl, icon: ExternalLink }}>
             <p className="font-display text-wine text-xl">{formattedDate}</p>
             <p className="mt-1">Sábado • Celebração às {formattedTime}</p>
           </DetailCard>
 
-          {/* Card Localização */}
           <DetailCard icon={MapPin} title="Onde" delay={0.2}
             action={{ label: "Como chegar (GPS)", href: location.googleMapsUrl, icon: Navigation }}>
             <p className="font-display text-wine text-xl">{location.name}</p>
@@ -75,7 +69,6 @@ export default function EventDetails() {
           </DetailCard>
         </div>
 
-        {/* Mapa Interativo Profissional */}
         <motion.div className="mt-16 bg-white/40 backdrop-blur-sm rounded-[2.5rem] p-4 md:p-8 border border-wine/5 shadow-xl"
           initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <div className="flex items-center gap-3 mb-6 px-4">

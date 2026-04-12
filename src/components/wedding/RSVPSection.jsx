@@ -11,11 +11,7 @@ import { Textarea } from '@/components/ui/textarea';
 import useScrollAnimation from './useScrollAnimation';
 import Divider from './Divider';
 
-/**
- * Seção de Confirmação de Presença (RSVP)
- */
 export default function RSVPSection() {
-  // --- Estados do Formulário ---
   const [formData, setFormData] = useState({
     name: '',
     isAlone: true,
@@ -27,11 +23,6 @@ export default function RSVPSection() {
   
   const { ref, isVisible } = useScrollAnimation();
 
-  // --- Helpers e Lógicas ---
-
-  /**
-   * Dispara o efeito visual de celebração
-   */
   const fireCelebration = () => {
     const duration = 3000;
     const end = Date.now() + duration;
@@ -57,15 +48,11 @@ export default function RSVPSection() {
     }());
   };
 
-  /**
-   * Reseta o formulário para uma nova entrada
-   */
   const resetForm = () => {
     setFormData({ name: '', isAlone: true, guests: '1', message: '' });
     setSubmitted(false);
   };
 
-  // Volta ao formulário automaticamente após 15s
   useEffect(() => {
     if (submitted) {
       const timer = setTimeout(resetForm, 15000);
@@ -73,9 +60,6 @@ export default function RSVPSection() {
     }
   }, [submitted]);
 
-  /**
-   * Processamento do Envio
-   */
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name.trim() || loading) return;
@@ -100,8 +84,6 @@ export default function RSVPSection() {
     }
   };
 
-  // --- Componentes Internos para Limpeza Visual ---
-  
   const SuccessState = () => (
     <motion.div
       className="text-center bg-white/60 backdrop-blur-sm rounded-2xl p-8 sm:p-12 border border-wine/5 shadow-sm"
@@ -145,7 +127,6 @@ export default function RSVPSection() {
             <motion.form key="form" onSubmit={handleSubmit} className="bg-white/70 backdrop-blur-md rounded-3xl p-6 sm:p-10 border border-wine/5 shadow-lg space-y-6"
               initial={{ opacity: 0, y: 30 }} animate={isVisible ? { opacity: 1, y: 0 } : {}} exit={{ opacity: 0, scale: 0.95 }}>
               
-              {/* Nome */}
               <div className="space-y-2">
                 <label className="font-body text-sm text-wine/70 uppercase tracking-widest px-1">Nome Completo</label>
                 <Input value={formData.name} required placeholder="Como está no convite"
@@ -153,7 +134,6 @@ export default function RSVPSection() {
                   className="bg-white/80 border-wine/10 h-12 focus:ring-wine/20" />
               </div>
 
-              {/* Acompanhantes Toggle */}
               <div className="space-y-3">
                 <label className="font-body text-sm text-wine/70 uppercase tracking-widest px-1">Você virá acompanhado?</label>
                 <div className="flex gap-4">
@@ -168,7 +148,6 @@ export default function RSVPSection() {
                 </div>
               </div>
 
-              {/* Input Acompanhantes */}
               {!formData.isAlone && (
                 <motion.div className="space-y-2" initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }}>
                   <label className="font-body text-sm text-wine/70 uppercase tracking-widest px-1">Quantos convidados extras?</label>
@@ -178,7 +157,6 @@ export default function RSVPSection() {
                 </motion.div>
               )}
 
-              {/* Mensagem */}
               <div className="space-y-2">
                 <label className="font-body text-sm text-wine/70 uppercase tracking-widest px-1">Mensagem para o casal</label>
                 <Textarea rows={3} value={formData.message} placeholder="Deixe uma palavra de carinho..."

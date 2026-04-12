@@ -4,9 +4,6 @@ import useScrollAnimation from './useScrollAnimation';
 import Divider from './Divider';
 import { WEDDING_CONFIG } from '@/lib/wedding-config';
 
-/**
- * Calcula o tempo restante até a data alvo
- */
 const calculateTimeLeft = (targetDate) => {
   const diff = new Date(targetDate) - new Date();
   
@@ -20,9 +17,6 @@ const calculateTimeLeft = (targetDate) => {
   };
 };
 
-/**
- * Bloco Visual de Unidade de Tempo
- */
 function TimeUnit({ value, label, delay }) {
   return (
     <motion.div className="flex flex-col items-center"
@@ -44,7 +38,6 @@ export default function Countdown() {
   const [time, setTime] = useState(() => calculateTimeLeft(date));
   const { ref, isVisible } = useScrollAnimation();
 
-  // Atualiza o timer a cada segundo
   useEffect(() => {
     const timer = setInterval(() => {
       setTime(calculateTimeLeft(date));
