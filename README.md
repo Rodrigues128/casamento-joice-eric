@@ -11,7 +11,7 @@ Site oficial do casamento de **Joicilene e Eric**, desenvolvido para facilitar o
 - **🎁 Lista de Presentes:** Acesso rápido ao link da lista de presentes externa.
 - **🎵 Player de Música:** Música ambiente controlável pelo usuário.
 - **📖 Nossa História:** Seção dedicada a compartilhar a jornada do casal.
-- **📸 Galeria:** Espaço para fotos do casal.
+- **📱 Menu Dinâmico:** Navegação inteligente com rolagem suave entre as seções.
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -35,11 +35,14 @@ src/
 
 ## ⚙️ Configuração Centralizada
 
-A maioria das informações do site (nomes, data, local, links) pode ser alterada em um único arquivo:
-`src/lib/wedding-config.js`.
+A maioria das informações do site pode ser alterada em um único arquivo: `src/lib/wedding-config.js`.
 
-### Integração RSVP (Google Sheets)
-O formulário de RSVP envia os dados para um Google Apps Script, que os registra em uma planilha. A URL do script deve ser configurada em `WEDDING_CONFIG.links.googleSheetsApi`.
+Lá você pode configurar:
+- **Nomes e Data:** Informações principais do casal e do evento.
+- **Localização:** Nome do local e link do Google Maps.
+- **Mídia:** Link da música de fundo e imagem principal (Hero).
+- **Seções:** Nome e IDs das seções que aparecem no menu de navegação.
+- **Links Externos:** Lista de presentes e API do Google Sheets.
 
 ## 🚀 Como Rodar Localmente
 
