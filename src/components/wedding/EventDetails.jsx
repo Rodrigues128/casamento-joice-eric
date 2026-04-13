@@ -37,7 +37,7 @@ export default function EventDetails() {
   const { ref, isVisible } = useScrollAnimation();
   const { formattedDate, formattedTime, location } = WEDDING_CONFIG.event;
 
-  const calendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=Casamento+Joicilene+%26+Eric&dates=20260919T220000Z/20260920T010000Z&details=Celebração+do+casamento+de+Joicilene+e+Eric&location=${encodeURIComponent(location.address)}&sf=true&output=xml`;
+  const calendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=Casamento+Joicilene+%26+Eric&dates=20260912T220000Z/20260913T010000Z&details=Celebração+do+casamento+de+Joicilene+e+Eric&location=${encodeURIComponent(location.address)}&sf=true&output=xml`;
 
   return (
     <section id="evento" className="py-20 md:py-32 bg-blush" ref={ref}>

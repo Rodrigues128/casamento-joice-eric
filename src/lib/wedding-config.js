@@ -11,8 +11,8 @@ export const WEDDING_CONFIG = {
     names: "Joicilene & Eric",
   },
   event: {
-    date: "2026-09-19T19:00:00",
-    formattedDate: "19 de Setembro de 2026",
+    date: "2026-09-12T19:00:00",
+    formattedDate: "12 de Setembro de 2026",
     formattedTime: "19:00h",
     location: {
       name: "Espaço D'Rocha",

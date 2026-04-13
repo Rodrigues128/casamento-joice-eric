@@ -62,7 +62,7 @@ export default function EnvelopeHero({ onOpen }) {
               Joicilene <span className="text-sage italic text-3xl md:text-4xl">&</span> Eric
             </h1>
             <p className="mt-4 font-body text-sm md:text-base tracking-[0.3em] uppercase text-wine/70">
-              19 de Setembro de 2026
+              12 de Setembro de 2026
             </p>
             <div className="flex items-center justify-center gap-3 mt-5">
               <div className="h-px w-12 bg-wine/20" />

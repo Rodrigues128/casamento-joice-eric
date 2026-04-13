@@ -19,7 +19,7 @@ export default function Footer() {
           "O amor verdadeiro nunca se desgasta. Quanto mais você dá, mais você tem."
         </p>
         <p className="mt-8 font-body text-xs tracking-widest uppercase text-blush/30">
-          19 de Setembro de 2026
+          12 de Setembro de 2026
         </p>
         <p className="mt-4 font-body text-[10px] tracking-widest uppercase text-blush/20">
           © 2026 • Feito por PAGH Tecnologias

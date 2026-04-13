@@ -1,14 +1,16 @@
 # 💍 Casamento Joicilene & Eric
 
-Site oficial do casamento de **Joicilene e Eric**, desenvolvido para facilitar o acesso às informações do evento, confirmação de presença (RSVP) e lista de presentes.
+Site oficial do casamento de **Joicilene e Eric**, desenvolvido para facilitar o acesso às informações do evento, confirmação de presença (RSVP) e opções de presente.
 
 ## ✨ Funcionalidades
 
 - **💌 Convite Interativo:** Experiência imersiva com animações e elementos flutuantes.
-- **⏳ Contagem Regressiva:** Timer em tempo real até o grande dia.
+- **⏳ Contagem Regressiva:** Timer em tempo real até o grande dia (**12 de Setembro de 2026**).
 - **📍 Detalhes do Evento:** Informações completas sobre local, data e horário, com integração ao Google Maps.
 - **✅ RSVP (Confirmação de Presença):** Formulário integrado diretamente a uma Planilha do Google (Google Sheets).
-- **🎁 Lista de Presentes:** Acesso rápido ao link da lista de presentes externa.
+- **🎁 Opções de Presentes:** 
+    - **Lista Online:** Link direto para a lista virtual.
+    - **Loja Física:** Contato direto via WhatsApp com a vendedora (Gazin - Leonara).
 - **🎵 Player de Música:** Música ambiente controlável pelo usuário.
 - **📖 Nossa História:** Seção dedicada a compartilhar a jornada do casal.
 - **📱 Menu Dinâmico:** Navegação inteligente com rolagem suave entre as seções.
