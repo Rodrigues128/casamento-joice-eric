@@ -6,9 +6,11 @@ import Divider from './Divider';
 
 const confirmationMessage = 'Olá! Confirmo minha presença no casamento da Joicilene e Eric.';
 const confirmationWhatsAppUrl = `https://wa.me/556599256006?text=${encodeURIComponent(confirmationMessage)}`;
+const confirmationDeadline = new Date('2026-08-10T23:59:59-04:00');
 
 export default function RSVPSection() {
   const { ref, isVisible } = useScrollAnimation();
+  const isConfirmationOpen = new Date() <= confirmationDeadline;
 
   return (
     <section id="presenca" className="py-20 md:py-32 bg-blush-dark/30" ref={ref}>
@@ -32,7 +34,7 @@ export default function RSVPSection() {
             <Divider />
           </div>
           <p className="mt-6 font-body text-lg text-wine/60 italic leading-relaxed">
-            Sua presença é o nosso melhor presente.<br /> Por favor, confirme até 10 de Setembro.
+            Sua presença é o nosso melhor presente.<br /> Por favor, confirme até 10 de agosto.
           </p>
         </header>
 
@@ -41,20 +43,28 @@ export default function RSVPSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
         >
-          <p className="font-body text-wine/65 text-lg leading-relaxed mb-8">
-            Clique no botão abaixo para confirmar pelo WhatsApp com a mensagem pronta.
-          </p>
+          {isConfirmationOpen ? (
+            <>
+              <p className="font-body text-wine/65 text-lg leading-relaxed mb-8">
+                Clique no botão abaixo para confirmar pelo WhatsApp com a mensagem pronta.
+              </p>
 
-          <a
-            href={confirmationWhatsAppUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex w-full items-center justify-center gap-3 rounded-2xl bg-wine px-6 py-5 font-body text-lg text-white shadow-xl transition-all hover:bg-wine-light hover:shadow-2xl sm:w-auto sm:px-10"
-          >
-            <MessageCircle className="w-5 h-5" />
-            Confirmar Minha Presença
-            <ExternalLink className="w-4 h-4 opacity-70" />
-          </a>
+              <a
+                href={confirmationWhatsAppUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex w-full items-center justify-center gap-3 rounded-2xl bg-wine px-6 py-5 font-body text-lg text-white shadow-xl transition-all hover:bg-wine-light hover:shadow-2xl sm:w-auto sm:px-10"
+              >
+                <MessageCircle className="w-5 h-5" />
+                Confirmar Minha Presença
+                <ExternalLink className="w-4 h-4 opacity-70" />
+              </a>
+            </>
+          ) : (
+            <p className="font-body text-wine/65 text-lg leading-relaxed">
+              O prazo para confirmar presença encerrou em 10 de agosto.
+            </p>
+          )}
         </motion.div>
       </div>
     </section>
